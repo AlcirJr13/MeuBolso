@@ -1,23 +1,22 @@
 <script setup>
-// Lógica do Vue virá aqui no futuro
+import { RouterView, RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-      <h1 class="text-3xl font-bold text-blue-600 mb-4">
-        Olá, MeuBolso! 🚀
-      </h1>
-      <p class="text-gray-600 mb-6">
-        Tailwind CSS está funcionando perfeitamente!
-      </p>
-      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
-        Botão de Teste
-      </button>
-    </div>
+  <div class="min-h-screen bg-gray-100">
+    <nav class="bg-white shadow-md">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-6">
+        <span class="text-xl font-bold text-blue-600">MeuBolso</span>
+        <RouterLink to="/dashboard" class="text-gray-700 hover:text-blue-600 transition">Dashboard</RouterLink>
+        <RouterLink to="/transactions" class="text-gray-700 hover:text-blue-600 transition">Lançamentos</RouterLink>
+        <RouterLink to="/budget" class="text-gray-700 hover:text-blue-600 transition">Orçamento</RouterLink>
+        <RouterLink to="/savings-goals" class="text-gray-700 hover:text-blue-600 transition">Cofrinhos</RouterLink>
+        <RouterLink to="/investments" class="text-gray-700 hover:text-blue-600 transition">Investimentos</RouterLink>
+      </div>
+    </nav>
+
+    <main>
+      <RouterView />
+    </main>
   </div>
 </template>
-
-<style scoped>
-/* Estilos personalizados virão aqui */
-</style>
