@@ -1,22 +1,35 @@
 <script setup>
-import { RouterView, RouterLink } from 'vue-router'
+// ─── IMPORTS ──────────────────────────────────────────────────
+import { RouterView } from 'vue-router';
+import AppHeader from './components/layout/AppHeader.vue';
+import AppSidebar from './components/layout/AppSidebar.vue';
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100">
-    <nav class="bg-white shadow-md">
-      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-6">
-        <span class="text-xl font-bold text-blue-600">MeuBolso</span>
-        <RouterLink to="/dashboard" class="text-gray-700 hover:text-blue-600 transition">Dashboard</RouterLink>
-        <RouterLink to="/transactions" class="text-gray-700 hover:text-blue-600 transition">Lançamentos</RouterLink>
-        <RouterLink to="/budget" class="text-gray-700 hover:text-blue-600 transition">Orçamento</RouterLink>
-        <RouterLink to="/savings-goals" class="text-gray-700 hover:text-blue-600 transition">Cofrinhos</RouterLink>
-        <RouterLink to="/investments" class="text-gray-700 hover:text-blue-600 transition">Investimentos</RouterLink>
-      </div>
-    </nav>
+  <!--
+    LAYOUT PRINCIPAL
+    flex      → coloca a Sidebar e o "resto" lado a lado
+    min-h-screen → altura mínima de 100% da tela
+    bg-gray-50 → fundo cinza MUITO claro para o conteúdo respirar
+  -->
+  <div class="flex min-h-screen bg-gray-50">
+    <!-- Sidebar fixa à esquerda -->
+    <AppSidebar />
 
-    <main>
-      <RouterView />
-    </main>
+    <!-- Área direita: Header + Conteúdo -->
+    <!--
+      flex-1 = pega todo o espaço restante à direita da sidebar.
+      min-w-0 = permite o conteúdo "encolher" (evita overflow em telas estreitas).
+      flex flex-col = empilha Header em cima, conteúdo embaixo.
+    -->
+    <div class="flex-1 flex flex-col min-w-0">
+      <!-- Header (fica dentro da área direita) -->
+      <AppHeader />
+
+      <!-- Conteúdo: as páginas são injetadas aqui -->
+      <main class="flex-1 p-8">
+        <RouterView />
+      </main>
+    </div>
   </div>
 </template>
